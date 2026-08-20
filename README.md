@@ -1,140 +1,173 @@
-# ASUR — Proyecto de QA
+# QA — Sistema de Gestión PFT-DZ-GRUPO06-2025
 
-## 📌 Descripción
+## Resumen del Proyecto
 
-Proyecto académico desarrollado para la Asociación de Sordos del Uruguay
-(ASUR), orientado a la gestión de usuarios, perfiles, actividades,
-espacios, reservas y auditoría.
+Sesión de pruebas de Aseguramiento de Calidad (QA) para el sistema de gestión **PFT-DZ-GRUPO06-2025**, enfocada en la validación de diferentes módulos funcionales de la aplicación.
 
-Mi participación estuvo enfocada en el proceso de Quality Assurance,
-incluyendo planificación, diseño y ejecución de casos de prueba,
-testing de API REST y aplicación Web, gestión de defectos y análisis
-de métricas.
+Se realizaron pruebas funcionales, de validación, reglas de negocio y seguridad, utilizando **MantisBT** para el registro, seguimiento y gestión de los defectos encontrados durante las pruebas.
 
----
+Los defectos fueron documentados con información de prioridad, gravedad, reproducibilidad, módulo afectado, estado y resolución.
 
-## 🎯 Objetivo del testing
+> Los nombres de informadores y responsables fueron omitidos de esta documentación para preservar la privacidad de los integrantes del proyecto.
 
-Validar que las funcionalidades principales del sistema cumplieran
-con los requisitos funcionales y no funcionales definidos,
-verificando especialmente:
+## Errores Reportados (MantisBT)
 
-- Funcionalidad
-- Validaciones
-- Reglas de negocio
-- Integración API/Web
-- Gestión de usuarios y permisos
-- Reservas
-- Actividades
-- Auditoría
-- Consistencia de datos
+* **[[0042693]] - Registro de perfiles con datos inválidos**
+  * **Prioridad:** Alta
+  * **Gravedad:** Mayor
+  * **Reproducibilidad:** Siempre
+  * **Problema:** El sistema permite crear un perfil utilizando datos inválidos.
 
----
+* **[[0042694]] - Registro de perfiles con campos obligatorios faltantes**
+  * **Prioridad:** Alta
+  * **Gravedad:** Mayor
+  * **Reproducibilidad:** A veces
+  * **Problema:** El sistema permite registrar un perfil sin completar campos obligatorios.
 
-## 🧪 Tipos de pruebas
+* **[[0043292]] - Filtro por estado incorrecto en listado de perfiles**
+  * **Prioridad:** Normal
+  * **Gravedad:** Mayor
+  * **Reproducibilidad:** Siempre
+  * **Problema:** El filtro por estado no aplica correctamente sobre el listado de perfiles.
 
-- Pruebas funcionales
-- Pruebas de API
-- Pruebas Web
-- Pruebas de regresión
-- Pruebas de integración
-- Pruebas exploratorias
-- Pruebas de validación
-- Pruebas de accesibilidad
-- Pruebas de seguridad
+* **[[0042695]] - Registro de funcionalidades con datos inválidos**
+  * **Prioridad:** Normal
+  * **Gravedad:** Mayor
+  * **Reproducibilidad:** A veces
+  * **Problema:** El sistema permite registrar funcionalidades utilizando datos inválidos.
 
----
+* **[[0042669]] - Generación de reportes de reservas**
+  * **Prioridad:** Alta
+  * **Gravedad:** Mayor
+  * **Reproducibilidad:** Siempre
+  * **Problema:** El sistema no genera correctamente los reportes correspondientes a las reservas de espacios.
 
-## 🛠️ Herramientas
+* **[[0042668]] - Validación de reservas consecutivas**
+  * **Prioridad:** Alta
+  * **Gravedad:** Bloqueo
+  * **Reproducibilidad:** Siempre
+  * **Problema:** Se produce un bloqueo durante las validaciones de reservas consecutivas.
 
-- TestLink — gestión y ejecución de casos
-- Mantis — gestión de defectos
-- Postman — pruebas de API
-- DBeaver — validación de base de datos
-- PostgreSQL
-- Git / GitHub
+* **[[0042667]] - Validación de solapamiento de reservas**
+  * **Prioridad:** Alta
+  * **Gravedad:** Bloqueo
+  * **Reproducibilidad:** Siempre
+  * **Problema:** Se produce un bloqueo durante la validación de solapamiento al registrar nuevas reservas.
 
----
+* **[[0042666]] - Registro de nuevas reservas**
+  * **Prioridad:** Urgente
+  * **Gravedad:** Bloqueo
+  * **Reproducibilidad:** Siempre
+  * **Problema:** El sistema no permite registrar nuevas reservas.
 
-## 📊 Resultados
+* **[[0042664]] - Reactivación de espacios activos**
+  * **Prioridad:** Normal
+  * **Gravedad:** Menor
+  * **Reproducibilidad:** Siempre
+  * **Problema:** El sistema permite reactivar espacios que ya se encuentran activos.
 
-| Ciclo | Plataforma | Casos | Aprobación | Defectos |
-|---|---|---:|---:|---:|
-| v1.0 | API | 193 | 90,7% | 15 |
-| v1.0 | Web | 195 | 98,5% | 3 |
-| v2.0 | API | — | 99% | 1 |
-| v2.0 | Web | — | 100% | 0 |
+* **[[0042663]] - Validación de restricciones de estado**
+  * **Prioridad:** Urgente
+  * **Gravedad:** Bloqueo
+  * **Reproducibilidad:** Siempre
+  * **Problema:** No es posible validar las restricciones relacionadas con el estado debido a que el sistema no permite registrar nuevas reservas.
 
----
+* **[[0042662]] - Modificación de espacios con datos inválidos**
+  * **Prioridad:** Alta
+  * **Gravedad:** Mayor
+  * **Reproducibilidad:** Siempre
+  * **Problema:** El sistema permite modificar los datos de un espacio utilizando información inválida.
 
-## 🔎 Diseño de pruebas
+* **[[0042661]] - Registro de espacios con datos inválidos**
+  * **Prioridad:** Urgente
+  * **Gravedad:** Mayor
+  * **Reproducibilidad:** Siempre
+  * **Problema:** El sistema permite registrar nuevos espacios utilizando datos inválidos.
 
-Se utilizaron técnicas como:
+* **[[0042660]] - Inscripción en actividades canceladas**
+  * **Prioridad:** Urgente
+  * **Gravedad:** Mayor
+  * **Reproducibilidad:** Siempre
+  * **Problema:** El sistema permite realizar inscripciones en actividades que fueron canceladas.
 
-- Particiones de equivalencia
-- Análisis de valores límite
-- Casos positivos y negativos
-- Validación de reglas de negocio
-- Pruebas basadas en requisitos
+* **[[0042658]] - Inscripción en actividades finalizadas**
+  * **Prioridad:** Urgente
+  * **Gravedad:** Mayor
+  * **Reproducibilidad:** Siempre
+  * **Problema:** El sistema permite realizar inscripciones en actividades que ya finalizaron.
 
-[Ver técnicas de diseño](03-Tecnicas-de-Prueba/)
+* **[[0042657]] - Eliminación de actividades inactivas**
+  * **Prioridad:** Normal
+  * **Gravedad:** Menor
+  * **Reproducibilidad:** Siempre
+  * **Problema:** El sistema permite eliminar actividades que ya se encuentran inactivas.
 
----
+* **[[0042656]] - Listado de actividades con filtros**
+  * **Prioridad:** Alta
+  * **Gravedad:** Mayor
+  * **Reproducibilidad:** Siempre
+  * **Problema:** El sistema no carga o despliega correctamente el listado de actividades cuando se aplican filtros.
 
-## 🐞 Gestión de defectos
+* **[[0042655]] - Listado de actividades**
+  * **Prioridad:** Alta
+  * **Gravedad:** Mayor
+  * **Reproducibilidad:** Siempre
+  * **Problema:** El sistema no carga o despliega correctamente el listado de actividades disponibles.
 
-Los defectos fueron registrados y gestionados mediante Mantis.
+* **[[0042654]] - Registro de actividades sin solapamiento**
+  * **Prioridad:** Urgente
+  * **Gravedad:** Mayor
+  * **Reproducibilidad:** Siempre
+  * **Problema:** El sistema no permite registrar una nueva actividad cuando no existe solapamiento con otra actividad.
 
-Los reportes incluyeron:
+* **[[0042653]] - Bloqueo de usuario tras intentos fallidos**
+  * **Prioridad:** Alta
+  * **Gravedad:** Mayor
+  * **Reproducibilidad:** Siempre
+  * **Problema:** El mecanismo de autenticación no bloquea al usuario después de cinco intentos de inicio de sesión incorrectos.
+  * **Tipo:** Seguridad
 
-- Descripción
-- Pasos para reproducir
-- Resultado esperado
-- Resultado actual
-- Severidad
-- Prioridad
-- Estado
-- Evidencias
+* **[[0042659]] - Inscripción antes del período habilitado**
+  * **Prioridad:** Urgente
+  * **Gravedad:** Mayor
+  * **Reproducibilidad:** Siempre
+  * **Problema:** El sistema permite realizar inscripciones antes de que comience el período de inscripción establecido.
+  * **Estado:** Abierta
 
-[Ver ejemplos de defectos](04-Defectos-Mantis/)
+## Aprendizajes Clave de QA
 
----
+* **Validación de datos:** Las pruebas con datos inválidos permiten verificar que las reglas de validación sean aplicadas correctamente tanto en registros como en modificaciones.
 
-## 📋 Casos de prueba
+* **Reglas de negocio:** Las pruebas permitieron detectar problemas relacionados con períodos de inscripción, actividades canceladas o finalizadas y restricciones de reservas.
 
-Se diseñaron y ejecutaron casos para los módulos principales
-del backend API y aplicación Web.
+* **Pruebas de seguridad:** La validación del inicio de sesión permitió identificar un problema relacionado con la ausencia de bloqueo después de múltiples intentos fallidos.
 
-[Ver selección de casos de prueba](02-Casos-de-Prueba/)
+* **Defectos bloqueantes:** Algunos errores impedían continuar con determinadas pruebas, como el registro de nuevas reservas. Estos defectos pueden afectar la ejecución de otros casos relacionados.
 
----
+* **Reproducibilidad:** Registrar la frecuencia con la que ocurre un defecto permite determinar si el comportamiento es consistente o intermitente.
 
-## 📈 Métricas
+* **Trazabilidad:** El uso de identificadores únicos de MantisBT permite relacionar cada defecto con las pruebas ejecutadas y realizar seguimiento de su resolución.
 
-Las métricas utilizadas incluyeron:
+## Resumen de Defectos
 
-- Cobertura de requisitos
-- Porcentaje de ejecución
-- Porcentaje de aprobación
-- Defectos encontrados
-- Casos bloqueados
-- Eficiencia de ejecución
+| Métrica | Resultado |
+|---|---:|
+| Defectos registrados | 20 |
+| Defectos corregidos | 19 |
+| Defectos abiertos | 1 |
+| Defectos de gravedad Bloqueo | 4 |
+| Defectos de gravedad Mayor | 15 |
+| Defectos de gravedad Menor | 2 |
 
-[Ver resultados y métricas](05-Ejecucion-y-Metricas/)
+## Estado del Proyecto
 
----
+La mayoría de los defectos identificados durante las pruebas fueron **corregidos y cerrados/resueltos** mediante el seguimiento realizado en MantisBT.
 
-## 📄 Documentación
+Al momento del registro presentado, permanece **1 defecto abierto**, correspondiente a la validación del período de inscripción de actividades.
 
-- [Plan de Pruebas](01-Plan-de-Pruebas/)
-- [Informe Final de Pruebas](07-Documentacion/)
-- [Casos de Prueba](02-Casos-de-Prueba/)
-- [Defectos](04-Defectos-Mantis/)
+## Herramientas Utilizadas
 
----
-
-## 👩‍💻 Mi participación
-
-Participé en las actividades de análisis, diseño y ejecución de
-pruebas, documentación de resultados, seguimiento de defectos
-y análisis de métricas de calidad.
+* **MantisBT** — Registro y seguimiento de defectos.
+* **TestLink** — Gestión y ejecución de casos de prueba.
+* **Pruebas manuales** — Validación funcional y de reglas de negocio.
+* **Pruebas de seguridad** — Validación del comportamiento del mecanismo de autenticación.
