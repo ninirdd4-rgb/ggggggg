@@ -1,9 +1,14 @@
 # Registro de Bugs - Proyecto PFT-DZ-GRUPO06-2025
 
-Este documento contiene el registro de los bugs encontrados durante las pruebas del sistema **PFT-DZ-GRUPO06-2025**. Los defectos fueron registrados y gestionados mediante **MantisBT**, permitiendo realizar el seguimiento de su estado y resolución.
+Este documento contiene el registro de los bugs encontrados durante las pruebas del sistema **PFT-DZ-GRUPO06-2025**.
+
+Los defectos fueron registrados y gestionados mediante **MantisBT**, mientras que los casos de prueba asociados fueron gestionados mediante **TestLink**.
+
+## Bugs Reportados
 
 ## Bug 1: Registro de perfiles con datos inválidos
 * **ID Mantis:** 0042693
+* **Caso de prueba:** CP304
 * **Módulo:** Perfiles
 * **Descripción:** El sistema permite crear un perfil utilizando datos inválidos.
 * **Severidad:** Mayor
@@ -14,6 +19,7 @@ Este documento contiene el registro de los bugs encontrados durante las pruebas 
 
 ## Bug 2: Registro de perfiles con campos obligatorios faltantes
 * **ID Mantis:** 0042694
+* **Caso de prueba:** CP305
 * **Módulo:** Perfiles
 * **Descripción:** El sistema permite registrar un perfil sin completar los campos obligatorios.
 * **Severidad:** Mayor
@@ -22,8 +28,9 @@ Este documento contiene el registro de los bugs encontrados durante las pruebas 
 * **Estado:** Resuelta
 * **Resolución:** Corregida
 
-## Bug 3: Filtro de estado incorrecto en listado de perfiles
+## Bug 3: Filtro por estado no aplica correctamente
 * **ID Mantis:** 0043292
+* **Caso de prueba:** CP007
 * **Módulo:** Perfiles
 * **Descripción:** El filtro por estado no se aplica correctamente en el listado de perfiles.
 * **Severidad:** Mayor
@@ -34,6 +41,7 @@ Este documento contiene el registro de los bugs encontrados durante las pruebas 
 
 ## Bug 4: Registro de funcionalidades con datos inválidos
 * **ID Mantis:** 0042695
+* **Caso de prueba:** CP420
 * **Módulo:** Funcionalidades
 * **Descripción:** El sistema permite registrar una funcionalidad utilizando datos inválidos.
 * **Severidad:** Mayor
@@ -42,28 +50,31 @@ Este documento contiene el registro de los bugs encontrados durante las pruebas 
 * **Estado:** Resuelta
 * **Resolución:** Corregida
 
-## Bug 5: Generación incorrecta de reportes de reservas
+## Bug 5: Generación de reportes de reservas
 * **ID Mantis:** 0042669
+* **Caso de prueba:** CP413
 * **Módulo:** Espacio
-* **Descripción:** El sistema no genera correctamente los reportes correspondientes a las reservas realizadas en los espacios.
+* **Descripción:** El sistema no genera correctamente los reportes de reservas en espacios.
 * **Severidad:** Mayor
 * **Prioridad:** Alta
 * **Reproducibilidad:** Siempre
 * **Estado:** Cerrada
 * **Resolución:** Corregida
 
-## Bug 6: Bloqueo en validaciones de reservas consecutivas
+## Bug 6: Bloqueo en validación de reservas consecutivas
 * **ID Mantis:** 0042668
+* **Caso de prueba:** CP408
 * **Módulo:** Espacio
-* **Descripción:** El sistema presenta un bloqueo al realizar las validaciones relacionadas con reservas consecutivas.
+* **Descripción:** El sistema presenta un bloqueo durante las validaciones de reservas consecutivas.
 * **Severidad:** Bloqueo
 * **Prioridad:** Alta
 * **Reproducibilidad:** Siempre
 * **Estado:** Cerrada
 * **Resolución:** Corregida
 
-## Bug 7: Bloqueo en validación de solapamiento de reservas
+## Bug 7: Bloqueo en validación de solapamiento
 * **ID Mantis:** 0042667
+* **Caso de prueba:** CP407
 * **Módulo:** Espacio
 * **Descripción:** El sistema presenta un bloqueo durante la validación de solapamiento al registrar nuevas reservas.
 * **Severidad:** Bloqueo
@@ -72,18 +83,9 @@ Este documento contiene el registro de los bugs encontrados durante las pruebas 
 * **Estado:** Cerrada
 * **Resolución:** Corregida
 
-## Bug 8: Imposibilidad de registrar nuevas reservas
-* **ID Mantis:** 0042666
-* **Módulo:** Espacio
-* **Descripción:** El sistema no permite registrar nuevas reservas.
-* **Severidad:** Bloqueo
-* **Prioridad:** Urgente
-* **Reproducibilidad:** Siempre
-* **Estado:** Cerrada
-* **Resolución:** Corregida
-
-## Bug 9: Reactivación de espacios ya activos
+## Bug 8: Reactivación de espacios ya activos
 * **ID Mantis:** 0042664
+* **Caso de prueba:** CP398
 * **Módulo:** Espacio
 * **Descripción:** El sistema permite reactivar espacios que ya se encuentran activos.
 * **Severidad:** Menor
@@ -92,28 +94,31 @@ Este documento contiene el registro de los bugs encontrados durante las pruebas 
 * **Estado:** Cerrada
 * **Resolución:** Corregida
 
-## Bug 10: Imposibilidad de validar restricciones de estado
+## Bug 9: Imposibilidad de validar restricciones de estado
 * **ID Mantis:** 0042663
+* **Caso de prueba:** CP393
 * **Módulo:** Espacio
-* **Descripción:** No es posible validar las restricciones relacionadas con el estado debido a que el sistema no permite registrar nuevas reservas.
+* **Descripción:** No es posible validar las restricciones de estado debido a que el sistema no permite registrar nuevas reservas.
 * **Severidad:** Bloqueo
 * **Prioridad:** Urgente
 * **Reproducibilidad:** Siempre
 * **Estado:** Cerrada
 * **Resolución:** Corregida
 
-## Bug 11: Modificación de espacios con datos inválidos
+## Bug 10: Modificación de espacios con datos inválidos
 * **ID Mantis:** 0042662
+* **Caso de prueba:** CP383
 * **Módulo:** Espacio
-* **Descripción:** El sistema permite modificar los datos de un espacio utilizando información inválida.
+* **Descripción:** El sistema permite modificar los datos de un espacio utilizando datos inválidos.
 * **Severidad:** Mayor
 * **Prioridad:** Alta
 * **Reproducibilidad:** Siempre
 * **Estado:** Cerrada
 * **Resolución:** Corregida
 
-## Bug 12: Registro de espacios con datos inválidos
+## Bug 11: Registro de espacios con datos inválidos
 * **ID Mantis:** 0042661
+* **Caso de prueba:** CP376
 * **Módulo:** Espacio
 * **Descripción:** El sistema permite registrar un nuevo espacio utilizando datos inválidos.
 * **Severidad:** Mayor
@@ -122,8 +127,9 @@ Este documento contiene el registro de los bugs encontrados durante las pruebas 
 * **Estado:** Cerrada
 * **Resolución:** Corregida
 
-## Bug 13: Inscripción en actividades canceladas
+## Bug 12: Inscripciones en actividades canceladas
 * **ID Mantis:** 0042660
+* **Caso de prueba:** CP360
 * **Módulo:** Actividad
 * **Descripción:** El sistema permite realizar inscripciones en actividades que fueron canceladas.
 * **Severidad:** Mayor
@@ -132,8 +138,9 @@ Este documento contiene el registro de los bugs encontrados durante las pruebas 
 * **Estado:** Cerrada
 * **Resolución:** Corregida
 
-## Bug 14: Inscripción en actividades finalizadas
+## Bug 13: Inscripciones en actividades finalizadas
 * **ID Mantis:** 0042658
+* **Caso de prueba:** CP358
 * **Módulo:** Actividad
 * **Descripción:** El sistema permite realizar inscripciones en actividades que ya finalizaron.
 * **Severidad:** Mayor
@@ -142,8 +149,9 @@ Este documento contiene el registro de los bugs encontrados durante las pruebas 
 * **Estado:** Cerrada
 * **Resolución:** Corregida
 
-## Bug 15: Eliminación de actividades inactivas
+## Bug 14: Eliminación de actividades inactivas
 * **ID Mantis:** 0042657
+* **Caso de prueba:** CP352
 * **Módulo:** Actividad
 * **Descripción:** El sistema permite eliminar actividades que ya se encuentran inactivas.
 * **Severidad:** Menor
@@ -152,8 +160,9 @@ Este documento contiene el registro de los bugs encontrados durante las pruebas 
 * **Estado:** Cerrada
 * **Resolución:** Corregida
 
-## Bug 16: Listado de actividades con filtros
+## Bug 15: Listado de actividades con filtros
 * **ID Mantis:** 0042656
+* **Caso de prueba:** CP336
 * **Módulo:** Actividad
 * **Descripción:** El sistema no carga o despliega correctamente el listado de actividades cuando se aplican filtros.
 * **Severidad:** Mayor
@@ -162,8 +171,9 @@ Este documento contiene el registro de los bugs encontrados durante las pruebas 
 * **Estado:** Cerrada
 * **Resolución:** Corregida
 
-## Bug 17: Listado de actividades no disponible
+## Bug 16: Listado de actividades disponibles
 * **ID Mantis:** 0042655
+* **Caso de prueba:** CP339
 * **Módulo:** Actividad
 * **Descripción:** El sistema no carga o despliega correctamente el listado de actividades disponibles.
 * **Severidad:** Mayor
@@ -172,8 +182,9 @@ Este documento contiene el registro de los bugs encontrados durante las pruebas 
 * **Estado:** Cerrada
 * **Resolución:** Corregida
 
-## Bug 18: Registro de actividad sin solapamiento
+## Bug 17: Registro de actividad sin solapamiento
 * **ID Mantis:** 0042654
+* **Caso de prueba:** CP371
 * **Módulo:** Actividad
 * **Descripción:** El sistema no permite registrar una nueva actividad cuando no existe solapamiento con otra actividad.
 * **Severidad:** Mayor
@@ -182,8 +193,9 @@ Este documento contiene el registro de los bugs encontrados durante las pruebas 
 * **Estado:** Cerrada
 * **Resolución:** Corregida
 
-## Bug 19: Falta de bloqueo después de intentos fallidos de login
+## Bug 18: Login no bloquea después de intentos fallidos
 * **ID Mantis:** 0042653
+* **Caso de prueba:** CP271
 * **Módulo:** Usuario
 * **Descripción:** El sistema no bloquea al usuario después de cinco intentos incorrectos de inicio de sesión.
 * **Severidad:** Mayor
@@ -193,8 +205,9 @@ Este documento contiene el registro de los bugs encontrados durante las pruebas 
 * **Estado:** Cerrada
 * **Resolución:** Corregida
 
-## Bug 20: Inscripción antes del período habilitado
+## Bug 19: Inscripción antes del período habilitado
 * **ID Mantis:** 0042659
+* **Caso de prueba:** CP359
 * **Módulo:** Actividad
 * **Descripción:** El sistema permite realizar inscripciones antes de que comience el período de inscripción establecido.
 * **Severidad:** Mayor
@@ -203,25 +216,49 @@ Este documento contiene el registro de los bugs encontrados durante las pruebas 
 * **Estado:** Asignada
 * **Resolución:** Abierta
 
-## Resumen de Defectos
+## Trazabilidad QA
 
-* **Total de bugs registrados:** 20
-* **Bugs corregidos:** 19
-* **Bugs abiertos:** 1
-* **Bugs con severidad Mayor:** 15
-* **Bugs con severidad Bloqueo:** 4
-* **Bugs con severidad Menor:** 2
+Los defectos registrados presentan trazabilidad entre **MantisBT** y **TestLink**, permitiendo relacionar cada bug con el caso de prueba que permitió detectar el comportamiento incorrecto.
+
+| Bug Mantis | Caso TestLink | Módulo | Estado |
+|---|---|---|---|
+| 0042693 | CP304 | Perfiles | Resuelta |
+| 0042694 | CP305 | Perfiles | Resuelta |
+| 0043292 | CP007 | Perfiles | Resuelta |
+| 0042695 | CP420 | Funcionalidades | Resuelta |
+| 0042669 | CP413 | Espacio | Cerrada |
+| 0042668 | CP408 | Espacio | Cerrada |
+| 0042667 | CP407 | Espacio | Cerrada |
+| 0042664 | CP398 | Espacio | Cerrada |
+| 0042663 | CP393 | Espacio | Cerrada |
+| 0042662 | CP383 | Espacio | Cerrada |
+| 0042661 | CP376 | Espacio | Cerrada |
+| 0042660 | CP360 | Actividad | Cerrada |
+| 0042658 | CP358 | Actividad | Cerrada |
+| 0042657 | CP352 | Actividad | Cerrada |
+| 0042656 | CP336 | Actividad | Cerrada |
+| 0042655 | CP339 | Actividad | Cerrada |
+| 0042654 | CP371 | Actividad | Cerrada |
+| 0042653 | CP271 | Usuario | Cerrada |
+| 0042659 | CP359 | Actividad | Asignada |
 
 ## Aprendizajes Clave de QA
 
-* **Validación de datos:** Las pruebas con datos inválidos permitieron detectar fallos en registros y modificaciones.
-* **Reglas de negocio:** Se identificaron errores relacionados con reservas, actividades canceladas/finalizadas y períodos de inscripción.
-* **Pruebas de seguridad:** Se detectó una vulnerabilidad en el mecanismo de bloqueo del usuario después de múltiples intentos fallidos de autenticación.
-* **Defectos bloqueantes:** Algunos errores impedían continuar con determinadas pruebas, afectando otros escenarios dependientes.
-* **Trazabilidad:** MantisBT permitió mantener un identificador único para cada defecto y realizar seguimiento de su resolución.
+* **Trazabilidad:** La vinculación entre los casos de prueba de TestLink y los defectos de MantisBT permite identificar exactamente qué prueba detectó cada problema.
+
+* **Validación de datos:** Las pruebas con datos inválidos permitieron detectar fallos en los módulos de Perfiles, Funcionalidades y Espacio.
+
+* **Reglas de negocio:** Se identificaron errores relacionados con reservas, actividades canceladas o finalizadas y períodos de inscripción.
+
+* **Pruebas de seguridad:** Se detectó un problema en el mecanismo de bloqueo del usuario después de múltiples intentos fallidos de autenticación.
+
+* **Defectos bloqueantes:** Algunos bugs impedían continuar con otros escenarios de prueba, evidenciando la importancia de identificar y priorizar defectos bloqueantes.
+
+* **Gestión de defectos:** MantisBT permitió registrar, clasificar, priorizar y realizar seguimiento de los defectos hasta su resolución.
 
 ## Herramientas Utilizadas
 
-* **MantisBT:** Registro, seguimiento y gestión de defectos.
-* **TestLink:** Gestión y ejecución de casos de prueba.
-* **Pruebas manuales:** Validación funcional, reglas de negocio y seguridad.
+* **TestLink:** Diseño, gestión y ejecución de casos de prueba.
+* **MantisBT:** Registro, clasificación y seguimiento de defectos.
+* **Pruebas funcionales:** Validación de funcionalidades y reglas de negocio.
+* **Pruebas de seguridad:** Validación del comportamiento del mecanismo de autenticación.
