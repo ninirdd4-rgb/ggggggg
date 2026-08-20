@@ -1,63 +1,140 @@
-# Defectos registrados — MantisBT
+# ASUR — Proyecto de QA
 
-## Resumen
+## 📌 Descripción
 
-Registro de defectos detectados durante las pruebas del proyecto **PFT-DZ-GRUPO06-2025** y gestionados mediante **MantisBT**.
+Proyecto académico desarrollado para la Asociación de Sordos del Uruguay
+(ASUR), orientado a la gestión de usuarios, perfiles, actividades,
+espacios, reservas y auditoría.
 
-> Los nombres de usuarios y responsables fueron omitidos para preservar la privacidad.
+Mi participación estuvo enfocada en el proceso de Quality Assurance,
+incluyendo planificación, diseño y ejecución de casos de prueba,
+testing de API REST y aplicación Web, gestión de defectos y análisis
+de métricas.
 
-## Defectos
+---
 
-| ID | Prioridad | Gravedad | Reproducibilidad | Módulo | Resumen | Estado | Resolución | Fecha |
-|---|---|---|---|---|---|---|---|---|
-| 0042693 | Alta | Mayor | Siempre | Perfiles | Registro con datos inválidos permite crear un perfil no válido | Resuelta | Corregida | 2025-11-08 |
-| 0042694 | Alta | Mayor | A veces | Perfiles | Sistema permite registrar perfil con campos obligatorios faltantes | Resuelta | Corregida | 2025-11-08 |
-| 0043292 | Normal | Mayor | Siempre | Perfiles | Filtro por Estado no aplica correctamente | Resuelta | Corregida | 2025-11-28 |
-| 0042695 | Normal | Mayor | A veces | Funcionalidades | Sistema permite registrar funcionalidad con datos inválidos | Resuelta | Corregida | 2025-11-08 |
-| 0042669 | Alta | Mayor | Siempre | Espacio | Sistema no genera reportes de reservas | Cerrada | Corregida | 2025-11-06 |
-| 0042668 | Alta | Bloqueo | Siempre | Espacio | Bloqueo en validaciones de reservas consecutivas | Cerrada | Corregida | 2025-11-06 |
-| 0042667 | Alta | Bloqueo | Siempre | Espacio | Bloqueo en validaciones de solapamiento | Cerrada | Corregida | 2025-11-06 |
-| 0042666 | Urgente | Bloqueo | Siempre | Espacio | Sistema no permite registrar nuevas reservas | Cerrada | Corregida | 2025-11-06 |
-| 0042664 | Normal | Menor | Siempre | Espacio | Permite reactivar espacios ya activos | Cerrada | Corregida | 2025-11-06 |
-| 0042663 | Urgente | Bloqueo | Siempre | Espacio | No es posible validar restricciones de estado | Cerrada | Corregida | 2025-11-06 |
-| 0042662 | Alta | Mayor | Siempre | Espacio | Permite modificar espacios con datos inválidos | Cerrada | Corregida | 2025-11-06 |
-| 0042661 | Urgente | Mayor | Siempre | Espacio | Permite registrar espacios con datos inválidos | Cerrada | Corregida | 2025-11-06 |
-| 0042660 | Urgente | Mayor | Siempre | Actividad | Permite inscripciones a actividades canceladas | Cerrada | Corregida | 2025-11-06 |
-| 0042658 | Urgente | Mayor | Siempre | Actividad | Permite inscripciones a actividades finalizadas | Cerrada | Corregida | 2025-11-06 |
-| 0042657 | Normal | Menor | Siempre | Actividad | Permite eliminar actividades inactivas | Cerrada | Corregida | 2025-11-06 |
-| 0042656 | Alta | Mayor | Siempre | Actividad | No carga correctamente el listado con filtros | Cerrada | Corregida | 2025-11-06 |
-| 0042655 | Alta | Mayor | Siempre | Actividad | No carga el listado de actividades disponibles | Cerrada | Corregida | 2025-11-06 |
-| 0042654 | Urgente | Mayor | Siempre | Actividad | No permite registrar actividad sin solapamiento | Cerrada | Corregida | 2025-11-06 |
-| 0042653 | Alta | Mayor | Siempre | Usuario | Login no bloquea después de 5 intentos erróneos | Cerrada | Corregida | 2025-11-06 |
-| 0042659 | Urgente | Mayor | Siempre | Actividad | Permite inscripciones antes del período habilitado | Asignada | Abierta | 2025-11-06 |
+## 🎯 Objetivo del testing
 
-## Evidencia de gestión
+Validar que las funcionalidades principales del sistema cumplieran
+con los requisitos funcionales y no funcionales definidos,
+verificando especialmente:
 
-Los defectos fueron registrados y gestionados mediante **MantisBT**.
-
-Se utilizaron los siguientes datos para realizar el seguimiento:
-
-- ID del defecto
-- Prioridad
-- Gravedad
-- Reproducibilidad
-- Módulo afectado
-- Descripción del defecto
-- Estado
-- Resolución
-- Fecha de reporte
-
-## Tipos de defectos identificados
-
-- Validaciones de datos
+- Funcionalidad
+- Validaciones
 - Reglas de negocio
-- Gestión de reservas
-- Gestión de actividades
-- Gestión de perfiles
-- Seguridad y autenticación
-- Filtros y listados
-- Generación de reportes
+- Integración API/Web
+- Gestión de usuarios y permisos
+- Reservas
+- Actividades
+- Auditoría
+- Consistencia de datos
 
-## Resultado
+---
 
-La mayoría de los defectos identificados fueron **corregidos y cerrados/resueltos**, manteniendo la trazabilidad mediante los identificadores de MantisBT.
+## 🧪 Tipos de pruebas
+
+- Pruebas funcionales
+- Pruebas de API
+- Pruebas Web
+- Pruebas de regresión
+- Pruebas de integración
+- Pruebas exploratorias
+- Pruebas de validación
+- Pruebas de accesibilidad
+- Pruebas de seguridad
+
+---
+
+## 🛠️ Herramientas
+
+- TestLink — gestión y ejecución de casos
+- Mantis — gestión de defectos
+- Postman — pruebas de API
+- DBeaver — validación de base de datos
+- PostgreSQL
+- Git / GitHub
+
+---
+
+## 📊 Resultados
+
+| Ciclo | Plataforma | Casos | Aprobación | Defectos |
+|---|---|---:|---:|---:|
+| v1.0 | API | 193 | 90,7% | 15 |
+| v1.0 | Web | 195 | 98,5% | 3 |
+| v2.0 | API | — | 99% | 1 |
+| v2.0 | Web | — | 100% | 0 |
+
+---
+
+## 🔎 Diseño de pruebas
+
+Se utilizaron técnicas como:
+
+- Particiones de equivalencia
+- Análisis de valores límite
+- Casos positivos y negativos
+- Validación de reglas de negocio
+- Pruebas basadas en requisitos
+
+[Ver técnicas de diseño](03-Tecnicas-de-Prueba/)
+
+---
+
+## 🐞 Gestión de defectos
+
+Los defectos fueron registrados y gestionados mediante Mantis.
+
+Los reportes incluyeron:
+
+- Descripción
+- Pasos para reproducir
+- Resultado esperado
+- Resultado actual
+- Severidad
+- Prioridad
+- Estado
+- Evidencias
+
+[Ver ejemplos de defectos](04-Defectos-Mantis/)
+
+---
+
+## 📋 Casos de prueba
+
+Se diseñaron y ejecutaron casos para los módulos principales
+del backend API y aplicación Web.
+
+[Ver selección de casos de prueba](02-Casos-de-Prueba/)
+
+---
+
+## 📈 Métricas
+
+Las métricas utilizadas incluyeron:
+
+- Cobertura de requisitos
+- Porcentaje de ejecución
+- Porcentaje de aprobación
+- Defectos encontrados
+- Casos bloqueados
+- Eficiencia de ejecución
+
+[Ver resultados y métricas](05-Ejecucion-y-Metricas/)
+
+---
+
+## 📄 Documentación
+
+- [Plan de Pruebas](01-Plan-de-Pruebas/)
+- [Informe Final de Pruebas](07-Documentacion/)
+- [Casos de Prueba](02-Casos-de-Prueba/)
+- [Defectos](04-Defectos-Mantis/)
+
+---
+
+## 👩‍💻 Mi participación
+
+Participé en las actividades de análisis, diseño y ejecución de
+pruebas, documentación de resultados, seguimiento de defectos
+y análisis de métricas de calidad.
