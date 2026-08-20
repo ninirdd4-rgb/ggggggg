@@ -1,173 +1,227 @@
-# QA — Sistema de Gestión PFT-DZ-GRUPO06-2025
+# Registro de Bugs - Proyecto PFT-DZ-GRUPO06-2025
 
-## Resumen del Proyecto
+Este documento contiene el registro de los bugs encontrados durante las pruebas del sistema **PFT-DZ-GRUPO06-2025**. Los defectos fueron registrados y gestionados mediante **MantisBT**, permitiendo realizar el seguimiento de su estado y resolución.
 
-Sesión de pruebas de Aseguramiento de Calidad (QA) para el sistema de gestión **PFT-DZ-GRUPO06-2025**, enfocada en la validación de diferentes módulos funcionales de la aplicación.
+## Bug 1: Registro de perfiles con datos inválidos
+* **ID Mantis:** 0042693
+* **Módulo:** Perfiles
+* **Descripción:** El sistema permite crear un perfil utilizando datos inválidos.
+* **Severidad:** Mayor
+* **Prioridad:** Alta
+* **Reproducibilidad:** Siempre
+* **Estado:** Resuelta
+* **Resolución:** Corregida
 
-Se realizaron pruebas funcionales, de validación, reglas de negocio y seguridad, utilizando **MantisBT** para el registro, seguimiento y gestión de los defectos encontrados durante las pruebas.
+## Bug 2: Registro de perfiles con campos obligatorios faltantes
+* **ID Mantis:** 0042694
+* **Módulo:** Perfiles
+* **Descripción:** El sistema permite registrar un perfil sin completar los campos obligatorios.
+* **Severidad:** Mayor
+* **Prioridad:** Alta
+* **Reproducibilidad:** A veces
+* **Estado:** Resuelta
+* **Resolución:** Corregida
 
-Los defectos fueron documentados con información de prioridad, gravedad, reproducibilidad, módulo afectado, estado y resolución.
+## Bug 3: Filtro de estado incorrecto en listado de perfiles
+* **ID Mantis:** 0043292
+* **Módulo:** Perfiles
+* **Descripción:** El filtro por estado no se aplica correctamente en el listado de perfiles.
+* **Severidad:** Mayor
+* **Prioridad:** Normal
+* **Reproducibilidad:** Siempre
+* **Estado:** Resuelta
+* **Resolución:** Corregida
 
-> Los nombres de informadores y responsables fueron omitidos de esta documentación para preservar la privacidad de los integrantes del proyecto.
+## Bug 4: Registro de funcionalidades con datos inválidos
+* **ID Mantis:** 0042695
+* **Módulo:** Funcionalidades
+* **Descripción:** El sistema permite registrar una funcionalidad utilizando datos inválidos.
+* **Severidad:** Mayor
+* **Prioridad:** Normal
+* **Reproducibilidad:** A veces
+* **Estado:** Resuelta
+* **Resolución:** Corregida
 
-## Errores Reportados (MantisBT)
+## Bug 5: Generación incorrecta de reportes de reservas
+* **ID Mantis:** 0042669
+* **Módulo:** Espacio
+* **Descripción:** El sistema no genera correctamente los reportes correspondientes a las reservas realizadas en los espacios.
+* **Severidad:** Mayor
+* **Prioridad:** Alta
+* **Reproducibilidad:** Siempre
+* **Estado:** Cerrada
+* **Resolución:** Corregida
 
-* **[[0042693]] - Registro de perfiles con datos inválidos**
-  * **Prioridad:** Alta
-  * **Gravedad:** Mayor
-  * **Reproducibilidad:** Siempre
-  * **Problema:** El sistema permite crear un perfil utilizando datos inválidos.
+## Bug 6: Bloqueo en validaciones de reservas consecutivas
+* **ID Mantis:** 0042668
+* **Módulo:** Espacio
+* **Descripción:** El sistema presenta un bloqueo al realizar las validaciones relacionadas con reservas consecutivas.
+* **Severidad:** Bloqueo
+* **Prioridad:** Alta
+* **Reproducibilidad:** Siempre
+* **Estado:** Cerrada
+* **Resolución:** Corregida
 
-* **[[0042694]] - Registro de perfiles con campos obligatorios faltantes**
-  * **Prioridad:** Alta
-  * **Gravedad:** Mayor
-  * **Reproducibilidad:** A veces
-  * **Problema:** El sistema permite registrar un perfil sin completar campos obligatorios.
+## Bug 7: Bloqueo en validación de solapamiento de reservas
+* **ID Mantis:** 0042667
+* **Módulo:** Espacio
+* **Descripción:** El sistema presenta un bloqueo durante la validación de solapamiento al registrar nuevas reservas.
+* **Severidad:** Bloqueo
+* **Prioridad:** Alta
+* **Reproducibilidad:** Siempre
+* **Estado:** Cerrada
+* **Resolución:** Corregida
 
-* **[[0043292]] - Filtro por estado incorrecto en listado de perfiles**
-  * **Prioridad:** Normal
-  * **Gravedad:** Mayor
-  * **Reproducibilidad:** Siempre
-  * **Problema:** El filtro por estado no aplica correctamente sobre el listado de perfiles.
+## Bug 8: Imposibilidad de registrar nuevas reservas
+* **ID Mantis:** 0042666
+* **Módulo:** Espacio
+* **Descripción:** El sistema no permite registrar nuevas reservas.
+* **Severidad:** Bloqueo
+* **Prioridad:** Urgente
+* **Reproducibilidad:** Siempre
+* **Estado:** Cerrada
+* **Resolución:** Corregida
 
-* **[[0042695]] - Registro de funcionalidades con datos inválidos**
-  * **Prioridad:** Normal
-  * **Gravedad:** Mayor
-  * **Reproducibilidad:** A veces
-  * **Problema:** El sistema permite registrar funcionalidades utilizando datos inválidos.
+## Bug 9: Reactivación de espacios ya activos
+* **ID Mantis:** 0042664
+* **Módulo:** Espacio
+* **Descripción:** El sistema permite reactivar espacios que ya se encuentran activos.
+* **Severidad:** Menor
+* **Prioridad:** Normal
+* **Reproducibilidad:** Siempre
+* **Estado:** Cerrada
+* **Resolución:** Corregida
 
-* **[[0042669]] - Generación de reportes de reservas**
-  * **Prioridad:** Alta
-  * **Gravedad:** Mayor
-  * **Reproducibilidad:** Siempre
-  * **Problema:** El sistema no genera correctamente los reportes correspondientes a las reservas de espacios.
+## Bug 10: Imposibilidad de validar restricciones de estado
+* **ID Mantis:** 0042663
+* **Módulo:** Espacio
+* **Descripción:** No es posible validar las restricciones relacionadas con el estado debido a que el sistema no permite registrar nuevas reservas.
+* **Severidad:** Bloqueo
+* **Prioridad:** Urgente
+* **Reproducibilidad:** Siempre
+* **Estado:** Cerrada
+* **Resolución:** Corregida
 
-* **[[0042668]] - Validación de reservas consecutivas**
-  * **Prioridad:** Alta
-  * **Gravedad:** Bloqueo
-  * **Reproducibilidad:** Siempre
-  * **Problema:** Se produce un bloqueo durante las validaciones de reservas consecutivas.
+## Bug 11: Modificación de espacios con datos inválidos
+* **ID Mantis:** 0042662
+* **Módulo:** Espacio
+* **Descripción:** El sistema permite modificar los datos de un espacio utilizando información inválida.
+* **Severidad:** Mayor
+* **Prioridad:** Alta
+* **Reproducibilidad:** Siempre
+* **Estado:** Cerrada
+* **Resolución:** Corregida
 
-* **[[0042667]] - Validación de solapamiento de reservas**
-  * **Prioridad:** Alta
-  * **Gravedad:** Bloqueo
-  * **Reproducibilidad:** Siempre
-  * **Problema:** Se produce un bloqueo durante la validación de solapamiento al registrar nuevas reservas.
+## Bug 12: Registro de espacios con datos inválidos
+* **ID Mantis:** 0042661
+* **Módulo:** Espacio
+* **Descripción:** El sistema permite registrar un nuevo espacio utilizando datos inválidos.
+* **Severidad:** Mayor
+* **Prioridad:** Urgente
+* **Reproducibilidad:** Siempre
+* **Estado:** Cerrada
+* **Resolución:** Corregida
 
-* **[[0042666]] - Registro de nuevas reservas**
-  * **Prioridad:** Urgente
-  * **Gravedad:** Bloqueo
-  * **Reproducibilidad:** Siempre
-  * **Problema:** El sistema no permite registrar nuevas reservas.
+## Bug 13: Inscripción en actividades canceladas
+* **ID Mantis:** 0042660
+* **Módulo:** Actividad
+* **Descripción:** El sistema permite realizar inscripciones en actividades que fueron canceladas.
+* **Severidad:** Mayor
+* **Prioridad:** Urgente
+* **Reproducibilidad:** Siempre
+* **Estado:** Cerrada
+* **Resolución:** Corregida
 
-* **[[0042664]] - Reactivación de espacios activos**
-  * **Prioridad:** Normal
-  * **Gravedad:** Menor
-  * **Reproducibilidad:** Siempre
-  * **Problema:** El sistema permite reactivar espacios que ya se encuentran activos.
+## Bug 14: Inscripción en actividades finalizadas
+* **ID Mantis:** 0042658
+* **Módulo:** Actividad
+* **Descripción:** El sistema permite realizar inscripciones en actividades que ya finalizaron.
+* **Severidad:** Mayor
+* **Prioridad:** Urgente
+* **Reproducibilidad:** Siempre
+* **Estado:** Cerrada
+* **Resolución:** Corregida
 
-* **[[0042663]] - Validación de restricciones de estado**
-  * **Prioridad:** Urgente
-  * **Gravedad:** Bloqueo
-  * **Reproducibilidad:** Siempre
-  * **Problema:** No es posible validar las restricciones relacionadas con el estado debido a que el sistema no permite registrar nuevas reservas.
+## Bug 15: Eliminación de actividades inactivas
+* **ID Mantis:** 0042657
+* **Módulo:** Actividad
+* **Descripción:** El sistema permite eliminar actividades que ya se encuentran inactivas.
+* **Severidad:** Menor
+* **Prioridad:** Normal
+* **Reproducibilidad:** Siempre
+* **Estado:** Cerrada
+* **Resolución:** Corregida
 
-* **[[0042662]] - Modificación de espacios con datos inválidos**
-  * **Prioridad:** Alta
-  * **Gravedad:** Mayor
-  * **Reproducibilidad:** Siempre
-  * **Problema:** El sistema permite modificar los datos de un espacio utilizando información inválida.
+## Bug 16: Listado de actividades con filtros
+* **ID Mantis:** 0042656
+* **Módulo:** Actividad
+* **Descripción:** El sistema no carga o despliega correctamente el listado de actividades cuando se aplican filtros.
+* **Severidad:** Mayor
+* **Prioridad:** Alta
+* **Reproducibilidad:** Siempre
+* **Estado:** Cerrada
+* **Resolución:** Corregida
 
-* **[[0042661]] - Registro de espacios con datos inválidos**
-  * **Prioridad:** Urgente
-  * **Gravedad:** Mayor
-  * **Reproducibilidad:** Siempre
-  * **Problema:** El sistema permite registrar nuevos espacios utilizando datos inválidos.
+## Bug 17: Listado de actividades no disponible
+* **ID Mantis:** 0042655
+* **Módulo:** Actividad
+* **Descripción:** El sistema no carga o despliega correctamente el listado de actividades disponibles.
+* **Severidad:** Mayor
+* **Prioridad:** Alta
+* **Reproducibilidad:** Siempre
+* **Estado:** Cerrada
+* **Resolución:** Corregida
 
-* **[[0042660]] - Inscripción en actividades canceladas**
-  * **Prioridad:** Urgente
-  * **Gravedad:** Mayor
-  * **Reproducibilidad:** Siempre
-  * **Problema:** El sistema permite realizar inscripciones en actividades que fueron canceladas.
+## Bug 18: Registro de actividad sin solapamiento
+* **ID Mantis:** 0042654
+* **Módulo:** Actividad
+* **Descripción:** El sistema no permite registrar una nueva actividad cuando no existe solapamiento con otra actividad.
+* **Severidad:** Mayor
+* **Prioridad:** Urgente
+* **Reproducibilidad:** Siempre
+* **Estado:** Cerrada
+* **Resolución:** Corregida
 
-* **[[0042658]] - Inscripción en actividades finalizadas**
-  * **Prioridad:** Urgente
-  * **Gravedad:** Mayor
-  * **Reproducibilidad:** Siempre
-  * **Problema:** El sistema permite realizar inscripciones en actividades que ya finalizaron.
+## Bug 19: Falta de bloqueo después de intentos fallidos de login
+* **ID Mantis:** 0042653
+* **Módulo:** Usuario
+* **Descripción:** El sistema no bloquea al usuario después de cinco intentos incorrectos de inicio de sesión.
+* **Severidad:** Mayor
+* **Prioridad:** Alta
+* **Reproducibilidad:** Siempre
+* **Tipo:** Seguridad
+* **Estado:** Cerrada
+* **Resolución:** Corregida
 
-* **[[0042657]] - Eliminación de actividades inactivas**
-  * **Prioridad:** Normal
-  * **Gravedad:** Menor
-  * **Reproducibilidad:** Siempre
-  * **Problema:** El sistema permite eliminar actividades que ya se encuentran inactivas.
-
-* **[[0042656]] - Listado de actividades con filtros**
-  * **Prioridad:** Alta
-  * **Gravedad:** Mayor
-  * **Reproducibilidad:** Siempre
-  * **Problema:** El sistema no carga o despliega correctamente el listado de actividades cuando se aplican filtros.
-
-* **[[0042655]] - Listado de actividades**
-  * **Prioridad:** Alta
-  * **Gravedad:** Mayor
-  * **Reproducibilidad:** Siempre
-  * **Problema:** El sistema no carga o despliega correctamente el listado de actividades disponibles.
-
-* **[[0042654]] - Registro de actividades sin solapamiento**
-  * **Prioridad:** Urgente
-  * **Gravedad:** Mayor
-  * **Reproducibilidad:** Siempre
-  * **Problema:** El sistema no permite registrar una nueva actividad cuando no existe solapamiento con otra actividad.
-
-* **[[0042653]] - Bloqueo de usuario tras intentos fallidos**
-  * **Prioridad:** Alta
-  * **Gravedad:** Mayor
-  * **Reproducibilidad:** Siempre
-  * **Problema:** El mecanismo de autenticación no bloquea al usuario después de cinco intentos de inicio de sesión incorrectos.
-  * **Tipo:** Seguridad
-
-* **[[0042659]] - Inscripción antes del período habilitado**
-  * **Prioridad:** Urgente
-  * **Gravedad:** Mayor
-  * **Reproducibilidad:** Siempre
-  * **Problema:** El sistema permite realizar inscripciones antes de que comience el período de inscripción establecido.
-  * **Estado:** Abierta
-
-## Aprendizajes Clave de QA
-
-* **Validación de datos:** Las pruebas con datos inválidos permiten verificar que las reglas de validación sean aplicadas correctamente tanto en registros como en modificaciones.
-
-* **Reglas de negocio:** Las pruebas permitieron detectar problemas relacionados con períodos de inscripción, actividades canceladas o finalizadas y restricciones de reservas.
-
-* **Pruebas de seguridad:** La validación del inicio de sesión permitió identificar un problema relacionado con la ausencia de bloqueo después de múltiples intentos fallidos.
-
-* **Defectos bloqueantes:** Algunos errores impedían continuar con determinadas pruebas, como el registro de nuevas reservas. Estos defectos pueden afectar la ejecución de otros casos relacionados.
-
-* **Reproducibilidad:** Registrar la frecuencia con la que ocurre un defecto permite determinar si el comportamiento es consistente o intermitente.
-
-* **Trazabilidad:** El uso de identificadores únicos de MantisBT permite relacionar cada defecto con las pruebas ejecutadas y realizar seguimiento de su resolución.
+## Bug 20: Inscripción antes del período habilitado
+* **ID Mantis:** 0042659
+* **Módulo:** Actividad
+* **Descripción:** El sistema permite realizar inscripciones antes de que comience el período de inscripción establecido.
+* **Severidad:** Mayor
+* **Prioridad:** Urgente
+* **Reproducibilidad:** Siempre
+* **Estado:** Asignada
+* **Resolución:** Abierta
 
 ## Resumen de Defectos
 
-| Métrica | Resultado |
-|---|---:|
-| Defectos registrados | 20 |
-| Defectos corregidos | 19 |
-| Defectos abiertos | 1 |
-| Defectos de gravedad Bloqueo | 4 |
-| Defectos de gravedad Mayor | 15 |
-| Defectos de gravedad Menor | 2 |
+* **Total de bugs registrados:** 20
+* **Bugs corregidos:** 19
+* **Bugs abiertos:** 1
+* **Bugs con severidad Mayor:** 15
+* **Bugs con severidad Bloqueo:** 4
+* **Bugs con severidad Menor:** 2
 
-## Estado del Proyecto
+## Aprendizajes Clave de QA
 
-La mayoría de los defectos identificados durante las pruebas fueron **corregidos y cerrados/resueltos** mediante el seguimiento realizado en MantisBT.
-
-Al momento del registro presentado, permanece **1 defecto abierto**, correspondiente a la validación del período de inscripción de actividades.
+* **Validación de datos:** Las pruebas con datos inválidos permitieron detectar fallos en registros y modificaciones.
+* **Reglas de negocio:** Se identificaron errores relacionados con reservas, actividades canceladas/finalizadas y períodos de inscripción.
+* **Pruebas de seguridad:** Se detectó una vulnerabilidad en el mecanismo de bloqueo del usuario después de múltiples intentos fallidos de autenticación.
+* **Defectos bloqueantes:** Algunos errores impedían continuar con determinadas pruebas, afectando otros escenarios dependientes.
+* **Trazabilidad:** MantisBT permitió mantener un identificador único para cada defecto y realizar seguimiento de su resolución.
 
 ## Herramientas Utilizadas
 
-* **MantisBT** — Registro y seguimiento de defectos.
-* **TestLink** — Gestión y ejecución de casos de prueba.
-* **Pruebas manuales** — Validación funcional y de reglas de negocio.
-* **Pruebas de seguridad** — Validación del comportamiento del mecanismo de autenticación.
+* **MantisBT:** Registro, seguimiento y gestión de defectos.
+* **TestLink:** Gestión y ejecución de casos de prueba.
+* **Pruebas manuales:** Validación funcional, reglas de negocio y seguridad.
