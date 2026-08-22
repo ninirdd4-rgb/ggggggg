@@ -250,4 +250,4 @@ En esa sección se puede consultar el detalle de las ejecuciones realizadas sobr
 ## Documentación relacionada
 
 - [Ejecución de APIs](./ejecucion-apis.md)
-- [Plan de pruebas completo](./plan-pruebas-asur.md)
+- [Plan de pruebas completo](./plan-pruebas-asur.pdf)
