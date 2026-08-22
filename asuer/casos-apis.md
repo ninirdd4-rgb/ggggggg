@@ -1,510 +1,253 @@
+# ASUR API — Casos de Prueba Destacados
 
-# Sistema ASUR — Plan de Pruebas API
+## Introducción
 
-> Proyecto: `PFT-DZ-GRUPO06-2025` · Suite: **Gestión Institucional de ASUR - API**
-> Backend desarrollado con **Spring Boot**, con pruebas funcionales sobre endpoints REST, validaciones, autorización, reglas de negocio y manejo de errores.
+Este documento presenta una selección de los casos de prueba más representativos del plan de pruebas de la API del Sistema ASUR.
 
-![Casos de prueba](https://img.shields.io/badge/Casos%20de%20prueba-193-blue)
-![Tiempo estimado](https://img.shields.io/badge/Tiempo%20estimado-7.28h-informational)
-![Tiempo real](https://img.shields.io/badge/Tiempo%20real-4.83h-success)
-![Ejecución](https://img.shields.io/badge/Tipo-Manual-lightgrey)
+El objetivo de esta selección es mostrar, de forma resumida, el trabajo realizado en **Quality Assurance y API Testing**, destacando escenarios que requieren validación de reglas de negocio, autenticación, autorización, manejo de errores, integridad de datos y restricciones de seguridad.
 
-Esta es una selección curada de los casos de prueba más representativos del plan completo (193 casos), agrupados por módulo funcional.
+El plan completo fue gestionado en **TestLink** y las pruebas de API fueron ejecutadas mediante **Postman**, sobre un backend desarrollado con **Spring Boot**. La suite contempla escenarios positivos y negativos organizados por módulos funcionales. 
 
-Las pruebas fueron diseñadas para validar operaciones CRUD, autenticación, autorización por roles, validaciones de datos, reglas de negocio, restricciones por estado y manejo de errores del backend.
 
-La ejecución se realizó mediante **colecciones de Postman**, utilizando **TestLink** para la gestión y seguimiento de los casos de prueba.
+## Resumen del trabajo
 
----
+- Diseño y ejecución de casos de prueba para APIs REST.
+- Pruebas manuales utilizando Postman.
+- Gestión y seguimiento de casos mediante TestLink.
+- Validación de códigos de respuesta HTTP.
+- Pruebas de autenticación mediante JWT.
+- Pruebas de autorización según roles.
+- Validación de datos obligatorios e inválidos.
+- Validación de datos duplicados.
+- Pruebas de reglas de negocio.
+- Validación de cambios de estado.
+- Pruebas de restricciones sobre recursos inactivos.
+- Validación de conflictos por solapamiento de horarios.
+- Pruebas de auditoría y control de acceso.
 
-## Índice
-* [ Autenticación](#-autenticación)
-* [ Gestión de Usuarios](#-gestión-de-usuarios)
-* [ Gestión de Perfiles](#-gestión-de-perfiles)
-* [️ Gestión de Funcionalidades](#️-gestión-de-funcionalidades)
-* [ Vinculación de Funcionalidades a Perfiles](#-vinculación-de-funcionalidades-a-perfiles)
-* [ Gestión de Actividades](#-gestión-de-actividades)
-* [️ Gestión de Espacios y Reservas](#️-gestión-de-espacios-y-reservas)
-* [️ Gestión de Auditoría](#️-gestión-de-auditoría)
-* [️ Stack de pruebas](#️-stack-de-pruebas)
+La suite de API cubre módulos como Login, Usuarios, Actividades, Espacios, Reservas, Auditoría y Seguridad. 
 
----
+## Casos de prueba destacados
 
-## Autenticación
+### 1. Autenticación y seguridad
 
-**Endpoint base:** `POST /api/auth/login`
+#### CP266 — Inicio de sesión exitoso
 
-### `PFTDZGR06-266` — Inicio de sesión exitoso
+**Endpoint:** `POST /api/auth/login`
 
-**Prioridad:**  Alta
+Valida que un usuario activo pueda autenticarse utilizando credenciales válidas.
 
-Valida el inicio de sesión utilizando credenciales correspondientes a un usuario activo.
-
-**Resultado esperado:** `200 OK` y generación de un **token JWT** válido para acceder a los recursos autorizados.
+**Resultado esperado:** `200 OK` y generación de un token JWT válido.
 
 ---
 
-### `PFTDZGR06-267` — Credenciales inválidas
+#### CP267 — Login con credenciales inválidas
 
-**Prioridad:**  Alta
+Valida el comportamiento del sistema frente a credenciales incorrectas.
 
-Valida el comportamiento del sistema cuando se proporciona una combinación incorrecta de email y contraseña.
-
-**Resultado esperado:** `400 Bad Request`. El sistema rechaza las credenciales y no genera un token de autenticación.
+**Resultado esperado:** `400 Bad Request`, sin generación de token.
 
 ---
 
-### `PFTDZGR06-268` — Login de usuario inactivo
+#### CP268 — Login de usuario inactivo
 
-**Prioridad:**  Alta
-
-Intenta iniciar sesión con un usuario cuyo estado se encuentra **INACTIVO**.
-
-**Resultado esperado:** `401 Unauthorized`. El sistema no permite el acceso.
-
----
-
-### `PFTDZGR06-461` — Login de usuario sin validar
-
-**Prioridad:**  Alta
-
-Verifica que un usuario registrado pero pendiente de validación no pueda autenticarse en el sistema.
+Valida que un usuario cuyo estado es `INACTIVO` no pueda autenticarse.
 
 **Resultado esperado:** `401 Unauthorized`.
 
 ---
 
-### `PFTDZGR06-271` — Fuerza bruta / múltiples intentos fallidos
+#### CP271 — Múltiples intentos fallidos / fuerza bruta
 
-**Prioridad:**  Alta
+Se realizan múltiples intentos consecutivos de autenticación utilizando credenciales incorrectas.
 
-Verifica la respuesta del sistema ante múltiples intentos fallidos consecutivos de inicio de sesión.
-
-**Precondición:** Usuario existente y activo.
-
-**Pasos principales:**
-
-| Nº | Paso                                                       |
-| -- | ---------------------------------------------------------- |
-| 1  | Enviar una solicitud de login con credenciales incorrectas |
-| 2  | Repetir el intento al menos 6 veces                        |
-| 3  | Verificar la respuesta del sistema                         |
-
-**Resultado esperado:** El sistema rechaza los intentos y bloquea temporalmente el acceso durante **15 minutos**.
+**Resultado esperado:** el sistema rechaza los intentos y bloquea temporalmente el acceso durante 15 minutos.
 
 ---
 
-## Gestión de Usuarios
+### 2. Validaciones e integridad de datos
 
-**Endpoint base:** `POST /api/usuarios` · `GET /api/usuarios` · `PUT /api/usuarios/{id}`
+#### CP219 — Registro de usuario con datos inválidos
 
-### `PFTDZGR06-216` / `PFTDZGR06-217` / `PFTDZGR06-218` — Registro de Usuario
+**Endpoint:** `POST /api/usuarios`
 
-**Prioridad:**  Alta
+Se envían datos que incumplen las reglas de validación del sistema.
 
-Valida el registro exitoso de usuarios de los diferentes tipos contemplados por el sistema:
-* Administrador
-* Socio
-* No Socio
-
-**Resultado esperado:** `201 Created` y creación correcta del usuario.
+**Resultado esperado:** `400 Bad Request`, con información sobre los campos inválidos y sin creación del usuario.
 
 ---
 
-### `PFTDZGR06-221` — Registro con datos duplicados
+#### CP220 — Registro con campos obligatorios faltantes
 
-**Prioridad:**  Alta
+Se prueba el comportamiento de la API cuando uno o más campos obligatorios se encuentran vacíos o son `null`.
 
-Intenta registrar un usuario utilizando información que ya existe en el sistema, como documento, email o teléfono.
-
-**Resultado esperado:** `409 Conflict`. El sistema rechaza el registro y evita la duplicación de datos.
+**Resultado esperado:** `400 Bad Request`, sin modificación de la base de datos.
 
 ---
 
-### `PFTDZGR06-247` — Listado de usuarios por rol no autorizado
+#### CP221 — Registro de usuario duplicado
 
-**Prioridad:**  Alta
+Valida que no puedan registrarse usuarios utilizando información única que ya existe, como documento, email o teléfono.
 
-Verifica que un usuario sin los permisos correspondientes no pueda consultar el listado general de usuarios.
+**Resultado esperado:** `409 Conflict`.
+
+---
+
+#### CP257 — Modificación con datos duplicados
+
+**Endpoint:** `PUT /api/usuarios/{id}`
+
+Se intenta modificar un usuario utilizando información que ya pertenece a otro registro.
+
+**Resultado esperado:** `409 Conflict`, sin modificar los datos existentes.
+
+---
+
+### 3. Autorización y control de acceso
+
+#### CP247 — Acceso al listado por usuario no autorizado
+
+Se intenta consultar el listado de usuarios utilizando un usuario con rol Socio o No Socio.
 
 **Resultado esperado:** `403 Forbidden`.
 
 ---
 
-### `PFTDZGR06-252` — Modificar de No Socio a Socio
+#### CP256 — Modificación por usuario no autorizado
 
-**Prioridad:**  Alta
+**Endpoint:** `PUT /api/usuarios/{id}`
 
-Valida que un administrador pueda modificar el tipo de usuario de **No Socio a Socio**.
-
-```http
-PUT /api/usuarios/{id}
-Authorization: Bearer <token>
-Content-Type: application/json
-
-{
-  "priNombre": "Carlos",
-  "priApellido": "Gómez",
-  "mail": "carlos.gomez@dominio.com",
-  "idPerfil": 2,
-  "idCiudad": 15
-}
-```
-
-**Resultado esperado:** `200 OK`.
-
-El sistema actualiza correctamente el usuario y genera automáticamente el **número de socio (`nroSocio`)** correspondiente.
-
----
-
-### `PFTDZGR06-272` — Administrador intenta modificar contraseña ajena
-
-**Prioridad:**  Alta
-
-Verifica las restricciones de autorización sobre la modificación de contraseñas de otros usuarios.
+Se intenta modificar información de un usuario utilizando una cuenta que no posee rol Administrador.
 
 **Resultado esperado:** `403 Forbidden`.
 
 ---
 
-## Gestión de Perfiles
+#### CP272 — Modificación de datos privados
 
-**Endpoint base:** `POST /api/perfiles` · `GET /api/perfiles` · `PUT /api/perfiles/{id}`
-
-### `PFTDZGR06-303` — Registro de Perfil
-
-**Prioridad:**  Alta
-
-Valida el alta de un nuevo perfil utilizando datos válidos.
-
-**Resultado esperado:** `201 Created`.
-
-El perfil se crea inicialmente con estado **INACTIVO**.
-
----
-
-### `PFTDZGR06-306` — Registro de Perfil con nombre duplicado
-
-**Prioridad:**  Alta
-
-Intenta registrar un perfil utilizando un nombre que ya existe.
-
-**Resultado esperado:** `409 Conflict`. El sistema no permite perfiles duplicados.
-
----
-
-### `PFTDZGR06-320` / `PFTDZGR06-324` — Baja y Reactivación de Perfil
-
-**Prioridad:**  Media
-
-Valida la eliminación lógica de un perfil y su posterior reactivación.
-
-**Resultado esperado:** `200 OK` en ambas operaciones y actualización correcta del estado del perfil.
-
----
-
-### `PFTDZGR06-328` — Asignar perfil inactivo a un usuario
-
-**Prioridad:**  Alta
-
-Verifica que un perfil con estado **INACTIVO** no pueda ser asociado a un usuario nuevo o existente.
-
-```http
-POST /api/usuarios
-Authorization: Bearer <token>
-
-{
-  "idPerfil": 3
-}
-```
-
-**Resultado esperado:** `422 Unprocessable Entity`.
-
-El sistema rechaza la operación y evita asociar perfiles dados de baja.
-
----
-
-## ️ Gestión de Funcionalidades
-
-**Endpoint base:** `POST /api/funcionalidades` · `GET /api/funcionalidades` · `PUT /api/funcionalidades/{id}`
-
-### `PFTDZGR06-419` — Registro de Funcionalidad
-
-**Prioridad:**  Media
-
-Valida el registro de una funcionalidad utilizando datos válidos.
-
-**Resultado esperado:** `201 Created`.
-
----
-
-### `PFTDZGR06-444` — Vincular funcionalidades a un perfil
-
-**Prioridad:**  Media
-
-Valida la asociación de una o más funcionalidades con un perfil existente.
-
-**Resultado esperado:** `200 OK` y creación correcta de las relaciones.
-
----
-
-### `PFTDZGR06-447` — Vincular funcionalidad inactiva a un perfil
-
-**Prioridad:**  Alta
-
-Verifica que una funcionalidad con estado **INACTIVO** no pueda ser vinculada a un perfil.
-
-**Resultado esperado:** `422 Unprocessable Entity`.
-
----
-
-### `PFTDZGR06-451` — Vincular funcionalidades ya vinculadas
-
-**Prioridad:**  Alta
-
-Verifica que el sistema evite duplicar una relación existente entre un perfil y sus funcionalidades.
-
-```http
-POST /api/permisos/acceso-funcionalidad
-Authorization: Bearer <token>
-Content-Type: application/json
-
-{
-  "idPerfil": 1,
-  "funcionalidadesIds": [4, 5, 6]
-}
-```
-
-**Resultado esperado:** `409 Conflict`.
-
-La operación no debe generar relaciones duplicadas ni modificar indebidamente los datos existentes.
-
----
-
-## Vinculación de Funcionalidades a Perfiles
-
-La vinculación entre perfiles y funcionalidades constituye una regla central de autorización del sistema.
-
-### `PFTDZGR06-444` — Vinculación de funcionalidades a un Perfil
-
-**Prioridad:**  Media
-
-Valida la asignación de funcionalidades a un perfil mediante el endpoint de permisos.
-
-**Resultado esperado:** Las funcionalidades quedan correctamente asociadas al perfil y disponibles según los permisos definidos.
-
----
-
-### `PFTDZGR06-447` — Restricción de funcionalidades inactivas
-
-**Prioridad:**  Alta
-
-Intenta asociar una funcionalidad cuyo estado es **INACTIVO**.
-
-**Resultado esperado:** `422 Unprocessable Entity`. El sistema rechaza la vinculación.
-
----
-
-### `PFTDZGR06-451` — Prevención de vínculos duplicados
-
-**Prioridad:**  Alta
-
-Verifica que una funcionalidad que ya se encuentra asociada al perfil no pueda volver a vincularse.
-
-**Resultado esperado:** `409 Conflict`.
-
----
-
-## Gestión de Actividades
-
-**Endpoint base:** `POST /api/actividades` · `GET /api/actividades` · `PUT /api/actividades/{id}`
-
-### Registro e Inscripción
-
-### `PFTDZGR06-329` — Registro de Actividad con datos válidos
-
-**Prioridad:**  Media
-
-Valida la creación de una actividad utilizando fecha, hora, espacio y demás datos requeridos.
-
-**Resultado esperado:** `201 Created`.
-
----
-
-### `PFTDZGR06-370` — Solapamiento de horarios en el mismo espacio
-
-**Prioridad:**  Alta
-
-Valida una regla crítica de negocio: no se deben registrar dos actividades que ocupen el mismo espacio durante horarios coincidentes.
-
-**Precondición:** Existe una actividad registrada para el `2025-12-22` a las `14:30`.
-
-```http
-POST /api/actividades
-Authorization: Bearer <token>
-Content-Type: application/json
-
-{
-  "fecActividad": "2025-12-22",
-  "horaActividad": "14:30:00",
-  "idEspacio": 1
-}
-```
-
-**Resultado esperado:** `409 Conflict`.
-
-El sistema rechaza la nueva actividad y no genera un registro duplicado para el espacio y horario ocupado.
-
----
-
-### `PFTDZGR06-371` — Actividades consecutivas sin solapamiento
-
-**Prioridad:**  Alta
-
-Verifica que puedan registrarse actividades consecutivas cuando existe el margen de tiempo definido por la regla de negocio.
-
-**Resultado esperado:** `201 Created`.
-
----
-
-### `PFTDZGR06-359` — Inscripción antes del período habilitado
-
-**Prioridad:**  Alta
-
-Intenta realizar una inscripción antes de la fecha de apertura configurada para la actividad.
-
-**Resultado esperado:** `422 Unprocessable Entity`.
-
----
-
-### `PFTDZGR06-418` — Baja de actividad con inscripción en curso
-
-**Prioridad:**  Alta
-
-Verifica que una actividad no pueda darse de baja cuando existen inscripciones activas o el período de inscripción se encuentra en curso.
-
-**Resultado esperado:** `409 Conflict`.
-
----
-
-## ️ Gestión de Espacios y Reservas
-
-**Endpoint base:** `POST /api/espacios` · `GET /api/espacios` · `PUT /api/espacios/{id}` · `POST /api/reservas/confirmar`
-
-### `PFTDZGR06-377` — Registro de Espacio
-
-**Prioridad:**  Alta
-
-Valida el alta de un nuevo espacio utilizando datos válidos.
-
-**Resultado esperado:** `201 Created`.
-
-El espacio se crea inicialmente con estado **INACTIVO**, requiriendo activación posterior.
-
----
-
-### `PFTDZGR06-393` — Reservar un espacio inactivo
-
-**Prioridad:**  Alta
-
-Verifica que un espacio con estado **INACTIVO** no pueda recibir nuevas reservas.
-
-```http
-POST /api/reservas/confirmar
-Authorization: Bearer <token>
-Content-Type: application/json
-
-{
-  "fecReservaActividad": "2025-12-28",
-  "horaReservaActividad": "10:00:00",
-  "duracion": 60,
-  "cantidadPersonas": 300,
-  "idUsuario": 2,
-  "idEspacio": 1,
-  "tipoPago": "EFECTIVO"
-}
-```
-
-**Resultado esperado:** `422 Unprocessable Entity`.
-
-El sistema rechaza la reserva debido al estado inactivo del espacio.
-
----
-
-### `PFTDZGR06-407` — Reserva con solapamiento de horario
-
-**Prioridad:**  Alta
-
-Valida que un espacio no pueda reservarse cuando ya existe otra reserva que ocupa el mismo intervalo horario.
-
-**Resultado esperado:** `409 Conflict`.
-
----
-
-### `PFTDZGR06-408` — Reservas consecutivas sin solapamiento
-
-**Prioridad:**  Media
-
-Verifica que dos reservas consecutivas puedan registrarse cuando no existe superposición entre sus horarios.
-
-**Resultado esperado:** `201 Created`.
-
----
-
-### `PFTDZGR06-411` — Cancelación de una reserva ya cancelada
-
-**Prioridad:**  Alta
-
-Intenta cancelar nuevamente una reserva cuyo estado ya es **CANCELADA**.
-
-**Resultado esperado:** `409 Conflict`.
-
----
-
-## ️ Gestión de Auditoría
-
-**Endpoint base:** `GET /api/auditorias/{tipoAuditoria}`
-
-Tipos contemplados: `Usuario` · `Actividad` · `Pago`
-
-### `PFTDZGR06-278` — Consulta de auditoría por tipo
-
-**Prioridad:**  Alta
-
-Valida que un usuario con permisos administrativos pueda consultar los registros de auditoría correspondientes al tipo solicitado.
-
-**Resultado esperado:** `200 OK`.
-
----
-
-### `PFTDZGR06-282` — Acceso de usuario no autorizado
-
-**Prioridad:**  Alta
-
-Verifica que usuarios sin permisos administrativos no puedan consultar información de auditoría.
+Se valida que incluso un usuario Administrador no pueda modificar determinados datos privados de otro usuario, como su contraseña.
 
 **Resultado esperado:** `403 Forbidden`.
 
 ---
 
-### `PFTDZGR06-283` — Consulta sin registros encontrados
+### 4. Reglas de negocio
 
-**Prioridad:**  Media
+#### CP370 — Solapamiento de actividades
 
-Realiza una consulta de auditoría para un tipo que no posee registros disponibles.
+**Endpoint:** `POST /api/actividades`
 
-**Resultado esperado:** `404 Not Found`.
+Se intenta registrar una actividad en un espacio y horario que ya se encuentra ocupado.
+
+**Resultado esperado:** `409 Conflict`.
+
+La nueva actividad no debe ser registrada.
 
 ---
 
-## ️ Stack de pruebas
+#### CP407 — Solapamiento de reservas
 
-| Componente       | Herramienta / Tecnología                                     |
-| ---------------- | ------------------------------------------------------------ |
-| Backend          | Spring Boot                                                  |
-| Gestión de casos | TestLink                                                     |
-| Ejecución        | Postman                                                      |
-| Tipo de prueba   | Manual                                                       |
-| API              | REST                                                         |
-| Autenticación    | JWT                                                          |
-| Cobertura        | Casos positivos, negativos, autorización y reglas de negocio |
+**Endpoint:** `POST /api/reservas/confirmar`
+
+Se intenta crear una reserva cuyo horario coincide total o parcialmente con otra reserva o actividad existente.
+
+**Resultado esperado:** `409 Conflict`.
+
+No se crea una nueva reserva.
+
+---
+
+#### CP411 — Cancelación de una reserva ya cancelada
+
+Se intenta cancelar nuevamente una reserva cuyo estado ya es `CANCELADA`.
+
+**Resultado esperado:** `409 Conflict`.
+
+---
+
+### 5. Gestión de permisos
+
+#### CP447 — Vinculación de funcionalidad inactiva
+
+**Endpoint:** `POST /api/permisos/acceso-funcionalidad`
+
+Se intenta asignar a un perfil una funcionalidad cuyo estado es `INACTIVO`.
+
+**Resultado esperado:** `422 Unprocessable Entity`.
+
+---
+
+#### CP451 — Prevención de vínculos duplicados
+
+Se intenta asociar nuevamente funcionalidades que ya se encuentran vinculadas a un perfil.
+
+**Resultado esperado:** `409 Conflict`.
+
+La operación no debe generar relaciones duplicadas ni modificar los datos existentes.
+
+---
+
+### 6. Auditoría
+
+#### CP282 — Acceso a auditoría por usuario no autorizado
+
+**Endpoint:** `GET /api/auditorias/{tipoAuditoria}`
+
+Se intenta consultar información de auditoría utilizando un usuario que no posee permisos administrativos.
+
+**Resultado esperado:** `403 Forbidden`.
+
+---
+
+#### CP280 — Consulta de auditoría con filtros inválidos
+
+Se utilizan filtros incorrectos, como fechas con formato inválido o usuarios inexistentes.
+
+**Resultado esperado:** `400 Bad Request`, con información sobre los parámetros inválidos.
+
+---
+
+## Cobertura demostrada
+
+Los casos seleccionados representan diferentes tipos de pruebas:
+
+| Área | Cobertura |
+|---|---|
+| Autenticación | Login exitoso, credenciales inválidas, usuarios inactivos |
+| Seguridad | Múltiples intentos fallidos y bloqueo temporal |
+| Validación | Campos inválidos y campos obligatorios |
+| Integridad de datos | Duplicados en registros y modificaciones |
+| Autorización | Restricciones por rol |
+| Privacidad | Restricciones sobre datos sensibles |
+| Reglas de negocio | Solapamiento de actividades y reservas |
+| Estados | Baja, reactivación y operaciones sobre estados inválidos |
+| Permisos | Funcionalidades activas, inactivas y relaciones duplicadas |
+| Auditoría | Acceso autorizado, no autorizado y filtros inválidos |
+| HTTP | Validación de códigos `200`, `201`, `400`, `401`, `403`, `404`, `409` y `422` |
+
+## Ejecución de APIs
+
+Además del diseño y gestión de los casos de prueba, se realizaron **dos builds para las APIs** como parte del flujo de trabajo del proyecto.
+
+La ejecución de las pruebas de API se documenta por separado:
+
+**[Ver Ejecución de APIs](./ejecucion-apis.md)**
+
+En esa sección se puede consultar el detalle de las ejecuciones realizadas sobre las colecciones de Postman.
+
+## Herramientas y tecnologías
+
+| Componente | Tecnología |
+|---|---|
+| Backend | Spring Boot |
+| API | REST |
+| Cliente de pruebas | Postman |
+| Gestión de casos | TestLink |
+| Autenticación | JWT |
+| Tipo de ejecución | Manual |
+| Cobertura | Casos positivos, negativos, autorización y reglas de negocio |
+
+## Documentación relacionada
+
+- [Ejecución de APIs](./ejecucion-apis.md)
+- [Plan de pruebas completo](./plan-pruebas-api.md)
